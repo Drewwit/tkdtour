@@ -14,12 +14,6 @@
         <a-sky id="img3" src="images/IMG_20240508_143412_029.JPG" visible="false"></a-sky>
         <a-sky id="img4" src="images/IMG_20240508_143440_996.JPG" visible="false"></a-sky>
 
-        <!-- POI Indicators for each room/sky -->
-        <a-image src="images/IMG_20240508_143149_670.JPG" id="poi1" position="-1 1 -3" scale="0.1 0.1 0.1" visible="true"></a-image>
-        <a-image src="images/IMG_20240508_143349_418.JPG" id="poi2" position="-1 1 -3" scale="0.1 0.1 0.1" visible="false"></a-image>
-        <a-image src="images/IMG_20240508_143412_029.JPG" id="poi3" position="-1 1 -3" scale="0.1 0.1 0.1" visible="false"></a-image>
-        <a-image src="images/IMG_20240508_143440_996.JPG" id="poi4" position="-1 1 -3" scale="0.1 0.1 0.1" visible="false"></a-image>
-
         <!-- Navigation Menu -->
         <a-entity id="menu" position="0 -3 -4">
             <a-image src="images/IMG_20240508_143149_670.JPG" width="1" height="1"
@@ -45,17 +39,17 @@
             const selectedSky = document.getElementById(skyId);
             selectedSky.setAttribute('visible', 'true');
 
-            // Hide all POIs
-            const pois = document.querySelectorAll('a-image');
+            // Hide all POIs (if any)
+            const pois = document.querySelectorAll('[id^="poi"]');
             pois.forEach((poi) => {
-                if (poi.id.startsWith('poi')) {
-                    poi.setAttribute('visible', 'false');
-                }
+                poi.setAttribute('visible', 'false');
             });
 
-            // Show selected POI
+            // Show selected POI (if any)
             const selectedPoi = document.getElementById(poiId);
-            selectedPoi.setAttribute('visible', 'true');
+            if (selectedPoi) {
+                selectedPoi.setAttribute('visible', 'true');
+            }
         }
     </script>
 </body>
