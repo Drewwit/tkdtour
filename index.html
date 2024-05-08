@@ -16,18 +16,12 @@
 
         <!-- Camera and Cursor for interaction -->
         <a-camera>
-            <a-cursor
-                id="cursor"
-                fuse="true"
-                fuse-timeout="1500"
-                raycaster="objects: .clickable"
-                color="yellow"
-                animation__click="property: scale; startEvents: click; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150"
-                animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-                animation__mouseleave="property: scale; startEvents: mouseleave; to: 1 1 1; dur: 150"
-                event-set__1="_event: mouseenter; color: #549ad5"
-                event-set__2="_event: mouseleave; color: #ededed">
-            </a-cursor>
+            <a-cursor 
+                position="0 0 -1" 
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                material="color: cyan; shader: flat"
+                animation__click="property: scale; startEvents: click; from: 0.7 0.7 0.7; to: 1 1 1; dur: 150"
+                raycaster="objects: .clickable"></a-cursor>
         </a-camera>
 
         <!-- Navigation Menu -->
