@@ -16,32 +16,42 @@
 
         <!-- Camera with cursor for interaction -->
         <a-camera>
-            <a-cursor color="yellow"></a-cursor>
+            <a-cursor 
+                raycaster="objects: .clickable"
+                fuse="true" 
+                fuse-timeout="500">
+            </a-cursor>
         </a-camera>
 
         <!-- Navigation Menu -->
         <a-entity id="menu" position="0 -3 -4">
-            <a-image src="images/IMG_20240508_143149_670.JPG" width="1" height="1"
-                     event-set__1="_event: click; _target: #img1; visible: true"
-                     event-set__2="_event: click; _target: #img2; visible: false"
-                     event-set__3="_event: click; _target: #img3; visible: false"
-                     event-set__4="_event: click; _target: #img4; visible: false"></a-image>
-            <a-image src="images/IMG_20240508_143349_418.JPG" width="1" height="1" position="1 0 0"
-                     event-set__1="_event: click; _target: #img2; visible: true"
-                     event-set__2="_event: click; _target: #img1; visible: false"
-                     event-set__3="_event: click; _target: #img3; visible: false"
-                     event-set__4="_event: click; _target: #img4; visible: false"></a-image>
-            <a-image src="images/IMG_20240508_143412_029.JPG" width="1" height="1" position="2 0 0"
-                     event-set__1="_event: click; _target: #img3; visible: true"
-                     event-set__2="_event: click; _target: #img1; visible: false"
-                     event-set__3="_event: click; _target: #img2; visible: false"
-                     event-set__4="_event: click; _target: #img4; visible: false"></a-image>
-            <a-image src="images/IMG_20240508_143440_996.JPG" width="1" height="1" position="3 0 0"
-                     event-set__1="_event: click; _target: #img4; visible: true"
-                     event-set__2="_event: click; _target: #img1; visible: false"
-                     event-set__3="_event: click; _target: #img2; visible: false"
-                     event-set__4="_event: click; _target: #img3; visible: false"></a-image>
+            <a-image class="clickable" src="images/IMG_20240508_143149_670.JPG" width="1" height="1"
+                     position="0 0 -4"
+                     onclick="changeImage('img1')"></a-image>
+            <a-image class="clickable" src="images/IMG_20240508_143349_418.JPG" width="1" height="1" 
+                     position="1 0 -4"
+                     onclick="changeImage('img2')"></a-image>
+            <a-image class="clickable" src="images/IMG_20240508_143412_029.JPG" width="1" height="1" 
+                     position="2 0 -4"
+                     onclick="changeImage('img3')"></a-image>
+            <a-image class="clickable" src="images/IMG_20240508_143440_996.JPG" width="1" height="1" 
+                     position="3 0 -4"
+                     onclick="changeImage('img4')"></a-image>
         </a-entity>
     </a-scene>
+
+    <script>
+        function changeImage(skyId) {
+            // Hide all skies
+            const skies = document.querySelectorAll('a-sky');
+            skies.forEach((sky) => {
+                sky.setAttribute('visible', 'false');
+            });
+
+            // Show selected sky
+            const selectedSky = document.getElementById(skyId);
+            selectedSky.setAttribute('visible', 'true');
+        }
+    </script>
 </body>
 </html>
