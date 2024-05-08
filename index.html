@@ -14,28 +14,35 @@
         <a-sky id="img3" src="images/IMG_20240508_143412_029.JPG" visible="false"></a-sky>
         <a-sky id="img4" src="images/IMG_20240508_143440_996.JPG" visible="false"></a-sky>
 
-        <!-- Camera with cursor for interaction -->
+        <!-- Camera and Cursor for interaction -->
         <a-camera>
-            <a-cursor 
+            <a-cursor
+                id="cursor"
+                fuse="true"
+                fuse-timeout="1500"
                 raycaster="objects: .clickable"
-                fuse="true" 
-                fuse-timeout="500">
+                color="yellow"
+                animation__click="property: scale; startEvents: click; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150"
+                animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                animation__mouseleave="property: scale; startEvents: mouseleave; to: 1 1 1; dur: 150"
+                event-set__1="_event: mouseenter; color: #549ad5"
+                event-set__2="_event: mouseleave; color: #ededed">
             </a-cursor>
         </a-camera>
 
         <!-- Navigation Menu -->
         <a-entity id="menu" position="0 -3 -4">
-            <a-image class="clickable" src="images/IMG_20240508_143149_670.JPG" width="1" height="1"
-                     position="0 0 -4"
+            <a-image src="images/IMG_20240508_143149_670.JPG" width="1" height="1"
+                     class="clickable"
                      onclick="changeImage('img1')"></a-image>
-            <a-image class="clickable" src="images/IMG_20240508_143349_418.JPG" width="1" height="1" 
-                     position="1 0 -4"
+            <a-image src="images/IMG_20240508_143349_418.JPG" width="1" height="1" position="1 0 0"
+                     class="clickable"
                      onclick="changeImage('img2')"></a-image>
-            <a-image class="clickable" src="images/IMG_20240508_143412_029.JPG" width="1" height="1" 
-                     position="2 0 -4"
+            <a-image src="images/IMG_20240508_143412_029.JPG" width="1" height="1" position="2 0 0"
+                     class="clickable"
                      onclick="changeImage('img3')"></a-image>
-            <a-image class="clickable" src="images/IMG_20240508_143440_996.JPG" width="1" height="1" 
-                     position="3 0 -4"
+            <a-image src="images/IMG_20240508_143440_996.JPG" width="1" height="1" position="3 0 0"
+                     class="clickable"
                      onclick="changeImage('img4')"></a-image>
         </a-entity>
     </a-scene>
@@ -44,7 +51,7 @@
         function changeImage(skyId) {
             // Hide all skies
             const skies = document.querySelectorAll('a-sky');
-            skies.forEach((sky) => {
+            skies.forEach(sky => {
                 sky.setAttribute('visible', 'false');
             });
 
