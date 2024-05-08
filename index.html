@@ -1,37 +1,47 @@
-<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>PrimeTour</title>
+
+    <title>The Virtual Reality Tour of the State Capitol Building</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tour">
-    <meta name="keywords" content="Virtual Reality Tour">
-    <meta name="author" content="tkd">
+    <meta name="description" content="Take a tour of the State Capitol Building on a Google Cardboard headset">
+    <meta name="keywords" content="Virtual Reality Tour of the State Capitol Building">
+    <meta name="author" content="Wisconsin.gov">
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-<body>
-    <a-scene>
-        <a-sky id="img1" src="images/IMG_20240508_143149_670.JPG" visible="true" rotation="0 -90 0"></a-sky>
-        <a-sky id="img2" src="images/IMG_20240508_143349_418.JPG" visible="false" rotation="0 135 0"></a-sky>
-        <a-sky id="img3" src="images/IMG_20240508_143412_029.JPG" visible="false" rotation="-.5 -93 5"></a-sky>
-        <a-sky id="img4" src="images/IMG_20240508_143440_996.JPG" visible="false" rotation="0 -90 3.5"></a-sky>
 
-        <!-- Camera and Cursor Setup -->
-        <a-entity>
-            <a-entity id="camera" camera look-controls mouse-cursor>
-                <a-cursor id="cursor" cursor="fuse: false" scale="1.3 1.3 1.3"
-                          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1.3 1.3 1.3; dur: 150"
-                          animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-                          event-set__1="_event: mouseenter; color: #549ad5"
-                          event-set__2="_event: mouseleave; color: #ededed"
-                          raycaster="far: 20; interval: 1000; objects: .clickable">
-                </a-cursor>
-            </a-entity>
+  </head>
+  <body>
+
+    <a-scene>
+
+      <a-sky data-array-link-id="rot" data-array="room" src="images/IMG_20240508_143149_670.JPG" visible="true" rotation="0 -90 0"></a-sky>
+      <a-sky data-array-link-id="spl" data-array="room" src="images/IMG_20240508_143349_418.JPG" visible="false" rotation="0 135 0"></a-sky>
+      <a-sky data-array-link-id="nhr" data-array="room" src="images/IMG_20240508_143412_029.JPG" visible="false" rotation="-.5 -93 5"></a-sky>
+      <a-sky data-array-link-id="asc" data-array="room" src="images/IMG_20240508_143440_996.JPG" visible="false" rotation="0 -90 3.5"></a-sky>
+      <a-sky data-array-link-id="gof" data-array="room" src="images/Gov_Office.jpg" visible="false" rotation="0 180 -2"></a-sky>
+      <a-sky data-array-link-id="sch" data-array="room" src="images/Senate_Chamber.jpg" visible="false" rotation="0 -90 0"></a-sky>
+      <a-sky data-array-link-id="sct" data-array="room" src="images/Supreme_Court.jpg" visible="false" rotation="0 -90 -6"></a-sky>
+      <a-sky data-array-link-id="lan" data-array="room" src="images/Lantern.jpg" visible="false" rotation="0 90 0"></a-sky>
+      <a-sky data-array-link-id="gcr" data-array="room" src="images/Gov_Conf_Room.jpg" visible="false" rotation="0 0 2"></a-sky>
+    
+
+
+      <a-entity>
+        <a-entity id="camera" camera="" look-controls="" mouse-cursor="">
+          <a-cursor id="cursor" cursor="fuse: false" scale="1.3 1.3 1.3"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1.3 1.3 1.3; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: #549ad5"
+          event-set__2="_event: mouseleave; color: #ededed"
+          raycaster="far: 20; interval: 1000; objects: .clickable"></a-cursor>
         </a-entity>
+      </a-entity>
+
 
   <!--Below is the code for POI "circles" that user clicks on-->
 
